@@ -4,21 +4,25 @@
 
 int VetG[1000];
 
+// Criando vetor randomizado
 void vetor(){
     
     printf("\t\t\t------------------------ Vetor Randomizado ---------------------------\n\n");
     srand(time(NULL));
-    for(int i=0; i<20; i++){
+    for(int i=0; i<200; i++){
         VetG[i]=rand() % 1000;
         printf("[%.3d]",VetG[i]);
     }
 }
+
+// Select Sort
 void S_Sort(int *vetor){
+    clock_t ini = clock();
     int aux,menor;
 
-    for(int i=0; i<20-1;i++){
+    for(int i=0; i<200-1;i++){
         menor = i;
-        for(int j=i+1; j<20; j++){
+        for(int j=i+1; j<200; j++){
             if(vetor[menor]>vetor[j]){
                 menor = j;
             } 
@@ -30,12 +34,16 @@ void S_Sort(int *vetor){
         }        
     }
     printf("\n\n\t        --------------------------- Vetor Ordenado ---------------------------\n\n");
-    for(int i = 0; i < 20; i++){
+    for(int i = 0; i < 200; i++){
         printf("[%.3d]",vetor[i]);
     }
+    printf("\nExecutou em %f segundos\n", ((double)clock() - ini) / CLOCKS_PER_SEC);
 }
-void I_Sort(int *vetor){
 
+// INSERT SORT
+
+void I_Sort(int *vetor){
+    clock_t ini = clock();
     int troca,j;
 
     printf("\n\n\t\t\t--------------------------- Vetor Ordenado ---------------------------\n\n");
@@ -57,24 +65,43 @@ void I_Sort(int *vetor){
     for (int i = 0; i < 20; i++){
             printf("[%.3d]",vetor[i]);
     }
+    printf("\nExecutou em %f segundos\n", ((double)clock() - ini) / CLOCKS_PER_SEC);
 }
+
+// Merge SORT
 void M_Sort(int *vetor){
+    clock_t ini = clock();
 
+    printf("\nExecutou em %f segundos\n", ((double)clock() - ini) / CLOCKS_PER_SEC);
 }
+
+// HEAP SORT
 void H_Sort(int *vetor){
+    clock_t ini = clock();
 
+    printf("\nExecutou em %f segundos\n", ((double)clock() - ini) / CLOCKS_PER_SEC);
 }
+
+// QUICK SORT
 void Q_Sort(int *vetor){
-    
+    clock_t ini = clock();
+
+    printf("\nExecutou em %f segundos\n", ((double)clock() - ini) / CLOCKS_PER_SEC);
 }
 
+
+//  Função principal
 int main(){
 
+    // Criação de variáveis, controle de menu e lopping
     int item, loop = 0, loopin = 1;
     char resp;
 
     //Esse {Do While} será usado para chamar o menu novamente.
     do{
+        //{System("cls")} é usado para limpar a operação anterior toda vez que chamar o menu.
+        system("cls");
+
         printf("\n\n||====================================||\n");
         printf("||       TRABALHO -|- GERHARD         ||\n");
         printf("||====================================||\n");
@@ -133,8 +160,7 @@ int main(){
             }
         }while(loopin == 2);
 
-         //{System("cls")} é usado para limpar a operação anterior toda vez que chamar o menu.
-        system("cls");
+         
     }while(loop == 1); 
     
 
