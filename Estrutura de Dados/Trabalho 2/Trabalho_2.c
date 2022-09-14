@@ -5,21 +5,20 @@
 int VetG[1000];
 
 void vetor(){
+    
+    printf("\t\t\t------------------------ Vetor Randomizado ---------------------------\n\n");
     srand(time(NULL));
-    for(int i=0; i<1000; i++){
+    for(int i=0; i<20; i++){
         VetG[i]=rand() % 1000;
-        printf("VetG[%d] = %d",i,VetG[i]);
+        printf("[%.3d]",VetG[i]);
     }
 }
 void S_Sort(int *vetor){
     int aux,menor;
 
-    for(int i=0; i<1000; i++){
-        vetor[i]=rand() % 1000; 
-    }
-    for(int i=0; i<1000-1;i++){
-        menor=i;
-        for(int j=i+1; j<1000; j++){
+    for(int i=0; i<20-1;i++){
+        menor = i;
+        for(int j=i+1; j<20; j++){
             if(vetor[menor]>vetor[j]){
                 menor = j;
             } 
@@ -30,13 +29,34 @@ void S_Sort(int *vetor){
             vetor[menor] = aux;
         }        
     }
-    printf("|");
-    for(int i=0; i<1000; i++){
-        printf("%.3d|",vetor[i]);
+    printf("\n\n\t        --------------------------- Vetor Ordenado ---------------------------\n\n");
+    for(int i = 0; i < 20; i++){
+        printf("[%.3d]",vetor[i]);
     }
 }
 void I_Sort(int *vetor){
 
+    int troca,j;
+
+    printf("\n\n\t\t\t--------------------------- Vetor Ordenado ---------------------------\n\n");
+    for (int i=1; i < 20; i++) // i começa na posição 1 do vetor e vai até a ultima posição;
+    {
+        j = i; // j recebe a posição que está passando no "for";
+
+        while (vetor[j] < vetor[j-1]) // Enquanto o valor que está passando na posição "j" for menor que a posição "j" menos 1, ocorre a troca;
+        { // Ocorre a troca;
+            troca      = vetor[j];
+            vetor[j]   = vetor[j-1];
+            vetor[j-1] = troca;
+            j--; // j decrementa 1;
+
+            if (j == 0) // Quando "j" chegar na posição 0, primeira posição do vetor, o laço while para;
+                break;
+        }
+    }
+    for (int i = 0; i < 20; i++){
+            printf("[%.3d]",vetor[i]);
+    }
 }
 void M_Sort(int *vetor){
 
@@ -45,7 +65,7 @@ void H_Sort(int *vetor){
 
 }
 void Q_Sort(int *vetor){
-
+    
 }
 
 int main(){
@@ -69,6 +89,8 @@ int main(){
         printf("Item escolhido: ");
         scanf("%d",&item);
 
+        vetor();
+
         switch(item){
             case 1:
                 S_Sort(&VetG);
@@ -77,12 +99,15 @@ int main(){
                 I_Sort(&VetG);
             break;
             case 3:
+                vetor();
                 M_Sort(&VetG);
             break;
             case 4:
+                vetor();
                 H_Sort(&VetG);
             break;
             case 5:
+                vetor();
                 Q_Sort(&VetG);
             break;
             case 6:
